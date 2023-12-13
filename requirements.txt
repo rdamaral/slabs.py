@@ -1,0 +1,2 @@
+matplotlib==3.7.1
+pymatgen==2023.3.23
