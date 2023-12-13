@@ -1,33 +1,13 @@
-import subprocess
-import importlib
-
-def check_dependency(dependency):
-    try:
-        importlib.import_module(dependency)
-    except ImportError:
-        print(f"{dependency} is not installed. Installing...")
-        install_dependency(dependency)
-
-def install_dependency(dependency):
-    subprocess.check_call(["pip", "install", dependency])
-    print(f"{dependency} has been installed successfully.")
-
-# Check and install dependencies
-check_dependency("matplotlib")
-check_dependency("pymatgen")
-
 import re
 import warnings
 import sys
+from collections import defaultdict
 from matplotlib import pyplot as plt
 from pymatgen.io.vasp.inputs import Poscar
 from pymatgen.core.structure import Structure
 from pymatgen.core.surface import *
-from pymatgen.core.lattice import Lattice
 from pymatgen.analysis.adsorption import *
 from pymatgen.transformations.standard_transformations import AutoOxiStateDecorationTransformation
-from pymatgen.transformations.standard_transformations import RotationTransformation
-from collections import defaultdict
 
 warnings.simplefilter("ignore", UserWarning)
 
